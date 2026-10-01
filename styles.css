@@ -664,3 +664,31 @@ html[data-theme="light"] .bottom-nav button.active { color: var(--sage); }
   .bottom-nav svg { width: 21px; height: 21px; }
   .game-card { min-height: 144px; padding: 15px; }
 }
+
+
+/* Conversation starters refinement */
+.feature-actions button,
+.result-copy {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+}
+.button-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  font-size: 18px;
+  line-height: 1;
+  font-weight: 700;
+}
+.arrow-icon { font-size: 20px; }
+.starter-card p { font-size: 17px; line-height: 1.58; }
+#starterMore .starter-card { padding: 20px; }
+#starterMore .result-copy { width: auto; min-width: 112px; padding: 0 18px; }
+@media (max-width: 520px) {
+  .feature-card { min-height: 330px; }
+  .feature-card .feature-question { font-size: clamp(29px, 8vw, 36px); }
+  #starterMore .result-copy { width: 100%; }
+}
