@@ -411,7 +411,6 @@ function renderCategorySheet() {
     `<button type="button" class="${selected === 'All topics' ? 'active' : ''}" data-category-choice="All topics">All</button>`,
     ...TOPIC_CATEGORIES.map(item => `<button type="button" class="${selected === item ? 'active' : ''}" data-category-choice="${escapeHtml(item)}">${escapeHtml(item)}</button>`)
   ].join('');
-  $('#gameCategoryGrid').innerHTML = CONVERSATION_GAMES.map(item => `<button type="button" class="${selected === item ? 'active' : ''}" data-category-choice="${escapeHtml(item)}">${escapeHtml(item)}</button>`).join('');
 }
 
 function renderStarterBrowse() {
