@@ -15,6 +15,143 @@ const CONVERSATION_GAMES = [
   'Red Flag, Green Flag or Depends?', 'Petty or Valid?'
 ];
 
+
+const OPENER_AUDIENCES = ['New person', 'Crush', 'Dating', 'Friend'];
+const OPENER_CATEGORIES = [
+  'All', 'Casual', 'Funny', 'Flirty', 'Deep', 'Interesting', 'Playful', 'Random',
+  'Check in', 'Reconnect', 'Late night', 'School', 'Work', 'Nigerian life', 'Music',
+  'Movies & TV', 'Food', 'Weekend', 'Opinion', 'Childhood', 'Ambition', 'Travel'
+];
+
+const OPENER_BANK = {
+  Casual: [
+    'Random one, how has your day actually been?',
+    'I just realised we have not properly gist today. What is going on with you?',
+    'What has been taking most of your time lately?',
+    'Quick one, what are you looking forward to this week?'
+  ],
+  Funny: [
+    'I need to know, what is the most unserious thing you have done this week?',
+    'Random question, what is one thing you do that would annoy you if somebody else did it?',
+    'Be honest, what is your funniest excuse for replying late?',
+    'I have a silly question for you. What food opinion would get you dragged immediately?'
+  ],
+  Flirty: [
+    'I was trying to mind my business, then I thought of you. How is your day going?',
+    'Quick question, are you always this easy to want to talk to?',
+    'I need your opinion on something, but I feel like you might distract me first.',
+    'What kind of conversation gets you talking for hours with someone you like?'
+  ],
+  Deep: [
+    'Random but serious question, what has life been teaching you lately?',
+    'What is something you understand about yourself now that you did not a year ago?',
+    'I have been thinking about this. What does a good life look like to you personally?',
+    'What is one thing you protect your peace from now without feeling guilty?'
+  ],
+  Interesting: [
+    'I need a proper answer to this, what is something you could talk about for hours?',
+    'What is one opinion you have that people usually disagree with?',
+    'What is something you recently learnt that genuinely surprised you?',
+    'What is one thing people assume about you and usually get wrong?'
+  ],
+  Playful: [
+    'Let me test something, how competitive are you from 1 to 10?',
+    'Pick one without overthinking, calls, texts or voice notes?',
+    'I have a quick challenge for you, describe your current mood with one song.',
+    'Choose your fighter, free food for a year or free flights for a year?'
+  ],
+  Random: [
+    'Very random, what app do you open more than you should?',
+    'Random thought, what is one purchase you will defend forever?',
+    'No context, what is your current comfort food?',
+    'Quick random one, what is something small that always improves your mood?'
+  ],
+  'Check in': [
+    'You crossed my mind, so I wanted to check in. How are you doing properly?',
+    'How has life been treating you this week?',
+    'I know people ask “how are you” casually, but how are you actually doing?',
+    'What has been taking most of your energy lately?'
+  ],
+  Reconnect: [
+    'We have not properly talked in a while. What have I missed?',
+    'I realised it has been a minute. How have you been?',
+    'Long time. What has changed for you since we last properly talked?',
+    'I refuse to let us become people who only react to each other’s stories. How are you?'
+  ],
+  'Late night': [
+    'Late-night question, what has been on your mind lately?',
+    'Since we are both awake, tell me something random about your day.',
+    'What is your brain refusing to stop thinking about tonight?',
+    'Night-time honesty, what is something you have been overthinking recently?'
+  ],
+  School: [
+    'Quick school question, what subject used to stress you the most?',
+    'Were you actually serious in school or were you there for the gist?',
+    'What teacher from secondary school do you still remember clearly?',
+    'What is one school memory that still makes you laugh?'
+  ],
+  Work: [
+    'How is work treating you today, be honest?',
+    'What part of your work do you enjoy more than you expected?',
+    'If you could remove one thing from your workday permanently, what would it be?',
+    'What has been the most satisfying thing you have worked on lately?'
+  ],
+  'Nigerian life': [
+    'What part of Nigerian adulting deserves financial compensation?',
+    'What is the most Lagos thing that has happened to you recently?',
+    'Which Nigerian meal could you eat three days in a row without complaining?',
+    'Be honest, what Nigerian habit do you complain about but still do yourself?'
+  ],
+  Music: [
+    'Send me one song you have had on repeat lately.',
+    'Who has been getting most of your listening time recently?',
+    'What song instantly puts you in a better mood?',
+    'If you had the aux right now, what are you playing first?'
+  ],
+  'Movies & TV': [
+    'I need something to watch. What have you seen recently that is worth it?',
+    'What show would you happily erase from your memory just to watch again?',
+    'Which TV character would annoy you badly in real life?',
+    'What is one film everybody loves that you do not rate?'
+  ],
+  Food: [
+    'Important question, what food will always win you over?',
+    'What is your go-to order when you do not know what to eat?',
+    'What Nigerian food opinion are you willing to fight for?',
+    'If food was already paid for, where are you eating tonight?'
+  ],
+  Weekend: [
+    'What is your ideal weekend when nobody is disturbing you?',
+    'What are you getting up to this weekend?',
+    'Are you more stay-home weekend or outside weekend?',
+    'If tomorrow was completely free, what would you do first?'
+  ],
+  Opinion: [
+    'I need an unbiased opinion on something.',
+    'Give me a hot take you stand by no matter what.',
+    'What is something everybody seems to like that you do not understand?',
+    'I need your verdict, is replying late disrespectful or does it depend?'
+  ],
+  Childhood: [
+    'What childhood snack would still make you happy today?',
+    'What cartoon did you take too seriously growing up?',
+    'What did you think adulthood would be like when you were younger?',
+    'What childhood game were you unnecessarily competitive about?'
+  ],
+  Ambition: [
+    'What are you trying to get better at right now?',
+    'What is one thing you want to have figured out in the next few years?',
+    'If money was sorted, what would you spend most of your time doing?',
+    'What is something you are quietly working towards?'
+  ],
+  Travel: [
+    'If I gave you a free flight tonight, where are you going?',
+    'What place in Nigeria do you still want to visit properly?',
+    'Are you more beach trip, city break or quiet getaway?',
+    'What is one place you visited that lived up to the hype?'
+  ]
+};
+
 const INTENTS = [
   'Reply naturally', 'Keep it going', 'Apologise', 'Flirt', 'Reassure them',
   'Explain myself', 'Say no politely', 'Comfort them', 'Resolve argument'
@@ -296,6 +433,9 @@ const state = {
   intentExpanded: false,
   screenshotData: null,
   screenshotFile: null,
+  openerAudience: 'Friend',
+  openerCategory: 'All',
+  openerCount: 10,
   starterTab: 'browse',
   starterCategory: 'All topics',
   personalCategory: 'All topics',
@@ -332,6 +472,67 @@ function shuffle(array) {
     [copy[i], copy[j]] = [copy[j], copy[i]];
   }
   return copy;
+}
+
+
+function openerPrompts(category, audience = 'Friend') {
+  const audienceBase = {
+    'New person': [
+      'I realised we have not properly talked before, so let me start with this, what have you been into lately?',
+      'I feel like there is a lot I do not know about you yet. What is something you always enjoy talking about?',
+      'Quick one, what kind of person do your friends say you are?',
+      'Let me skip the boring small talk, what has been the highlight of your week?'
+    ],
+    Crush: [
+      'I was looking for an excuse to talk to you, so here I am. How is your day going?',
+      'Random question, what kind of conversation makes you lose track of time?',
+      'I feel like you have a story I have not heard yet. Tell me one.',
+      'Be honest, what is the easiest way to get your attention?'
+    ],
+    Dating: [
+      'I want to know you outside the usual small talk. What has been making you happy lately?',
+      'What is one small thing that makes you feel cared for?',
+      'Random one, what does a perfect low-key date look like to you?',
+      'What is something you wish people asked you more often?'
+    ],
+    Friend: [
+      'I need gist. What has been happening with you?',
+      'Random one, what has made you laugh the most this week?',
+      'What are you currently obsessed with that I need to know about?',
+      'Tell me something I have somehow not heard yet.'
+    ]
+  };
+
+  const labelled = (name, items) => items.map(text => ({ label: name, text }));
+  if (category === 'All') {
+    return shuffle([
+      ...labelled(audience, audienceBase[audience] || audienceBase.Friend),
+      ...OPENER_CATEGORIES.filter(name => name !== 'All').flatMap(name => labelled(name, OPENER_BANK[name] || []))
+    ]);
+  }
+
+  const categoryItems = OPENER_BANK[category] || [];
+  if (category === 'Casual') {
+    return shuffle([
+      ...labelled(category, categoryItems),
+      ...labelled(audience, audienceBase[audience] || audienceBase.Friend)
+    ]);
+  }
+  return shuffle(labelled(category, categoryItems));
+}
+
+function localFallbackOpeners(category, audience, count) {
+  let pool = openerPrompts(category, audience);
+  if (!pool.length) pool = openerPrompts('All', audience);
+  const output = [];
+  while (output.length < count) {
+    const round = shuffle(pool);
+    for (const item of round) {
+      if (output.length >= count) break;
+      output.push(item);
+    }
+  }
+  return output.slice(0, count);
 }
 
 function normalPrompts(category) {
@@ -405,7 +606,49 @@ function renderRelationshipAndVibes() {
   $('#vibeChips').innerHTML = VIBES.map(item => `<button type="button" class="chip ${state.vibe === item ? 'active' : ''}" data-vibe="${escapeHtml(item)}">${escapeHtml(item)}</button>`).join('');
 }
 
+
+function renderOpenerAudience() {
+  $('#openerAudienceChips').innerHTML = OPENER_AUDIENCES.map(item => `
+    <button type="button" class="chip ${state.openerAudience === item ? 'active' : ''}" data-opener-audience="${escapeHtml(item)}">${escapeHtml(item)}</button>
+  `).join('');
+}
+
+function openerCard(item) {
+  return `<article class="starter-card opener-card"><span class="result-label">${escapeHtml(item.label || 'Opener')}</span><p>${escapeHtml(item.text || item)}</p><button type="button" class="result-copy" data-copy="${encodeURIComponent(item.text || item)}"><span class="isax icon-copy button-icon" aria-hidden="true"></span><span>Copy</span></button></article>`;
+}
+
+function renderOpeners() {
+  renderOpenerAudience();
+  $('#openOpenerCategory').textContent = state.openerCategory;
+
+  const pool = openerPrompts(state.openerCategory, state.openerAudience);
+  const feature = pool[0] || { label: 'Casual', text: 'Random one, how has your day actually been?' };
+
+  $('#openerFeature').innerHTML = `
+    <span class="feature-category">${escapeHtml(feature.label)}</span>
+    <div class="feature-question">${escapeHtml(feature.text)}</div>
+    <div class="feature-actions">
+      <button type="button" class="copy-feature" data-copy="${encodeURIComponent(feature.text)}" aria-label="Copy opener"><span class="isax icon-copy button-icon" aria-hidden="true"></span><span>Copy</span></button>
+      <button type="button" class="next-feature" id="nextOpenerFeature" aria-label="Show next opener"><span>Next</span><span class="isax icon-arrow-right button-icon" aria-hidden="true"></span></button>
+    </div>
+  `;
+
+  $('#openerMore').innerHTML = pool.slice(1, 5).map(openerCard).join('');
+  renderCountGrid('#openerCounts', state.openerCount, 'opener-count');
+}
+
 function renderCategorySheet() {
+  if (state.categoryTarget === 'opener') {
+    $('#categoryTitle').textContent = 'Opener category';
+    $('#categorySectionTitle').textContent = 'Opener style';
+    $('#topicCategoryGrid').innerHTML = OPENER_CATEGORIES.map(item => `
+      <button type="button" class="${state.openerCategory === item ? 'active' : ''}" data-category-choice="${escapeHtml(item)}">${escapeHtml(item)}</button>
+    `).join('');
+    return;
+  }
+
+  $('#categoryTitle').textContent = 'Conversation category';
+  $('#categorySectionTitle').textContent = 'Normal conversation';
   const selected = state.categoryTarget === 'browse' ? state.starterCategory : state.personalCategory;
   $('#topicCategoryGrid').innerHTML = [
     `<button type="button" class="${selected === 'All topics' ? 'active' : ''}" data-category-choice="All topics">All</button>`,
@@ -706,6 +949,61 @@ function localFallbackStarters(category, count) {
   return output.slice(0, count);
 }
 
+
+async function generateOpeners() {
+  const category = state.openerCategory;
+  const audience = state.openerAudience;
+  const count = state.openerCount;
+  const chunks = [];
+  for (let remaining = count; remaining > 0; remaining -= 10) chunks.push(Math.min(10, remaining));
+
+  const generated = [];
+  setLoading(true, `Generating ${count} openers...`);
+
+  try {
+    for (let index = 0; index < chunks.length; index += 1) {
+      $('#loadingText').textContent = `Generating ${Math.min((index + 1) * 10, count)} of ${count}...`;
+      const size = chunks[index];
+      const prompt = [
+        `Generate exactly ${size} ready-to-send conversation openers for a person in Nigeria.`,
+        `Who the user is talking to: ${audience}.`,
+        `Opener category: ${category}.`,
+        category === 'All' ? 'Mix the opener styles naturally and label each result with its style.' : '',
+        'These are OPENERS, not conversation starters for an already-running chat. Each result must work as the first message or the message that restarts a quiet chat.',
+        'Write the exact message the user should send. Do not give advice, explanations, headings inside the message, or interview-style lists.',
+        'Keep them natural, short enough for chat, socially aware and easy to reply to.',
+        'Use Nigerian English naturally where it fits. Light Pidgin is fine only when it genuinely suits the line. Do not force slang or location references.',
+        'Avoid repetitive “random question” phrasing. Vary the openings.',
+        `This is batch ${index + 1} of ${chunks.length}. Avoid obvious repeats.`,
+        'Return JSON only as {"replies":[{"label":"Casual","text":"..."}]}'
+      ].filter(Boolean).join('\n');
+
+      try {
+        const batch = await callWillow([{ text: prompt }], 28000);
+        generated.push(...batch);
+      } catch (error) {
+        if ([429, 502, 503, 504].includes(error.status)) break;
+        throw error;
+      }
+    }
+
+    let final = generated.slice(0, count);
+    if (final.length < count) {
+      final = [...final, ...localFallbackOpeners(category, audience, count - final.length)].slice(0, count);
+      toast(generated.length ? 'Willow filled the rest from its saved opener pack.' : 'Using Willow’s saved opener pack.', 2800);
+    }
+
+    $('#openerResults').innerHTML = final.map(openerCard).join('');
+    addHistory('Openers', `${audience} · ${category}`, `${count} openers`);
+    setTimeout(() => $('#openerResults').scrollIntoView({ behavior: 'smooth', block: 'start' }), 80);
+  } catch (error) {
+    $('#openerResults').innerHTML = localFallbackOpeners(category, audience, count).map(openerCard).join('');
+    toast('AI is unavailable, so Willow used its saved opener pack.', 3000);
+  } finally {
+    setLoading(false);
+  }
+}
+
 async function generateStarters({ personalised = false } = {}) {
   const category = personalised ? state.personalCategory : state.starterCategory;
   const count = personalised ? state.personalCount : state.starterCount;
@@ -779,6 +1077,7 @@ function closeCategorySheet() {
 
 function renderAll() {
   renderIntentChips();
+  renderOpeners();
   renderStarterBrowse();
   renderCountGrid('#personalCounts', state.personalCount, 'personal-count');
   renderRelationshipAndVibes();
@@ -826,11 +1125,29 @@ document.addEventListener('click', event => {
 
   if (button.dataset.categoryChoice) {
     const choice = button.dataset.categoryChoice;
+    if (state.categoryTarget === 'opener') {
+      state.openerCategory = choice;
+      closeCategorySheet();
+      renderOpeners();
+      return;
+    }
     if (state.categoryTarget === 'browse') state.starterCategory = choice;
     else state.personalCategory = choice;
     closeCategorySheet();
     renderStarterBrowse();
     $('#openPersonalCategory').textContent = state.personalCategory;
+    return;
+  }
+
+  if (button.dataset.openerAudience) {
+    state.openerAudience = button.dataset.openerAudience;
+    renderOpeners();
+    return;
+  }
+
+  if (button.dataset.openerCount) {
+    state.openerCount = Number(button.dataset.openerCount);
+    renderCountGrid('#openerCounts', state.openerCount, 'opener-count');
     return;
   }
 
@@ -920,6 +1237,8 @@ $('#removeScreenshot').addEventListener('click', event => {
 });
 
 $('#generateReplies').addEventListener('click', generateReplies);
+$('#generateOpeners').addEventListener('click', generateOpeners);
+$('#openOpenerCategory').addEventListener('click', () => openCategorySheet('opener'));
 $('#generateFresh').addEventListener('click', () => generateStarters({ personalised: false }));
 $('#generatePersonalised').addEventListener('click', () => generateStarters({ personalised: true }));
 $('#openPersonalCategory').addEventListener('click', () => openCategorySheet('personal'));
@@ -928,6 +1247,18 @@ $('#categoryBackdrop').addEventListener('click', closeCategorySheet);
 
 document.addEventListener('click', event => {
   if (event.target.closest('#openCategorySheet')) openCategorySheet('browse');
+
+  if (event.target.closest('#nextOpenerFeature')) {
+    const pool = openerPrompts(state.openerCategory, state.openerAudience);
+    const next = pool[Math.floor(Math.random() * pool.length)];
+    if (!next) return;
+    $('#openerFeature').innerHTML = `
+      <span class="feature-category">${escapeHtml(next.label)}</span>
+      <div class="feature-question">${escapeHtml(next.text)}</div>
+      <div class="feature-actions"><button type="button" class="copy-feature" data-copy="${encodeURIComponent(next.text)}"><span class="isax icon-copy button-icon" aria-hidden="true"></span><span>Copy</span></button><button type="button" class="next-feature" id="nextOpenerFeature"><span>Next</span><span class="isax icon-arrow-right button-icon" aria-hidden="true"></span></button></div>`;
+    return;
+  }
+
   if (event.target.closest('#nextFeature')) {
     const pool = shuffle(promptsForCategory(state.starterCategory));
     const next = pool[0];
@@ -1001,5 +1332,5 @@ renderPlayers();
 navigate('reply');
 
 if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js?v=20261001').catch(() => {}));
+  window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js?v=20261001-2').catch(() => {}));
 }

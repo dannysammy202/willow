@@ -520,7 +520,7 @@ html[data-theme="light"] .feature-card { background: var(--sage); color: #FFF9F2
   min-height: calc(76px + var(--safe-bottom));
   padding: 6px 5px calc(6px + var(--safe-bottom));
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: 2px;
   border-top: 1px solid var(--line);
   background: color-mix(in srgb, var(--surface) 96%, transparent);
@@ -941,4 +941,50 @@ textarea, input[type="text"] { border-radius: 15px; }
   .game-card p { font-size: 12px; }
   .game-arrow { position: static; justify-self: end; }
   #screen-games .page-heading { margin-bottom: 20px; }
+}
+
+
+/* Openers */
+.opener-controls {
+  padding: 18px;
+  margin-bottom: 16px;
+}
+.opener-controls .field-label:first-child { margin-top: 0; }
+.opener-feature { margin-top: 0; }
+#generateOpeners { margin-top: 18px; }
+html[data-theme="dark"] .opener-audiences .chip {
+  background: #352A23;
+  color: #F6EFE4;
+  border-color: #675448;
+}
+html[data-theme="dark"] .opener-audiences .chip.active {
+  background: #4A6343;
+  color: #F6EFE4;
+  border-color: #B7CC9F;
+}
+#openerMore {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
+}
+#openerMore .opener-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 190px;
+}
+#openerMore .opener-card p { flex: 1; }
+#openerMore .result-copy { margin-top: 14px; }
+
+@media (max-width: 520px) {
+  #openerMore { grid-template-columns: 1fr; }
+  #openerMore .opener-card { min-height: 0; }
+}
+
+@media (max-width: 430px) {
+  .bottom-nav button { padding-left: 0; padding-right: 0; }
+  .bottom-nav .isax { font-size: 20px; }
+  .bottom-nav span { font-size: 8.4px; }
+}
+
+@media (min-width: 700px) {
+  .bottom-nav { width: min(700px, calc(100% - 32px)); }
 }

@@ -89,6 +89,36 @@
       </div>
     </section>
 
+    <section class="screen" id="screen-openers" aria-labelledby="openersTitle">
+      <div class="page-wrap">
+        <div class="page-heading">
+          <span class="eyebrow">Start the conversation</span>
+          <h1 id="openersTitle">Stuck on what to say?</h1>
+          <p>Pick who you are talking to and the kind of opener you want. Willow gives you something you can send straight away.</p>
+        </div>
+
+        <section class="surface opener-controls">
+          <label class="field-label">Who are you talking to?</label>
+          <div id="openerAudienceChips" class="chip-wrap opener-audiences"></div>
+
+          <label class="field-label">Opener category</label>
+          <button id="openOpenerCategory" type="button" class="select-button">All</button>
+        </section>
+
+        <section id="openerFeature" class="surface feature-card opener-feature"></section>
+
+        <h2 class="section-title">More like this</h2>
+        <div id="openerMore" class="result-stack compact"></div>
+
+        <section class="surface fresh-card">
+          <h2>Need a fresh set?</h2>
+          <div id="openerCounts" class="count-grid"></div>
+          <button id="generateOpeners" type="button" class="primary-button">Generate fresh openers</button>
+        </section>
+        <div id="openerResults" class="result-stack compact"></div>
+      </div>
+    </section>
+
     <section class="screen" id="screen-starters" aria-labelledby="startersTitle">
       <div class="page-wrap">
         <div class="page-heading">
@@ -224,6 +254,7 @@
 
   <nav class="bottom-nav" aria-label="Primary navigation">
     <button class="active" type="button" data-nav="reply"><span class="isax icon-message-text" aria-hidden="true"></span><span>Reply</span></button>
+    <button type="button" data-nav="openers"><span class="isax icon-message-add" aria-hidden="true"></span><span>Openers</span></button>
     <button type="button" data-nav="starters"><span class="isax icon-lamp-on" aria-hidden="true"></span><span>Starters</span></button>
     <button type="button" data-nav="games"><span class="isax icon-game" aria-hidden="true"></span><span>Party Games</span></button>
     <button type="button" data-nav="history"><span class="isax icon-clock" aria-hidden="true"></span><span>History</span></button>
@@ -234,7 +265,7 @@
   <section id="categorySheet" class="bottom-sheet" aria-modal="true" aria-labelledby="categoryTitle" hidden>
     <div class="sheet-handle"></div>
     <div class="sheet-header"><h2 id="categoryTitle">Conversation category</h2><button id="closeCategorySheet" class="icon-button" type="button" aria-label="Close"><span class="isax icon-close-circle" aria-hidden="true"></span></button></div>
-    <h3>Normal conversation</h3>
+    <h3 id="categorySectionTitle">Normal conversation</h3>
     <div id="topicCategoryGrid" class="category-grid"></div>
   </section>
 

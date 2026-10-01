@@ -6,7 +6,11 @@ It supports:
 
 - Five AI-generated reply options from a pasted message, written context or a chat screenshot
 - Reply goals such as Reply naturally, Keep it going, Apologise, Flirt, Reassure, Explain myself, Say no politely, Comfort and Resolve argument
+- Openers for when you are stuck on what to say, tailored by who you are talking to and opener style
 - Nigerian-focused conversation starters
+- Opener audiences: New person, Crush, Dating and Friend
+- Opener categories with an All option, including Casual, Funny, Flirty, Deep, Playful, Check in, Reconnect, Late night, School, Work, Nigerian life, Music, Food, Weekend, Ambition and Travel
+- Fresh opener sets of 5, 10, 15, 25, 30 or 50
 - Browse and personalised starter modes
 - Normal conversation categories and conversation-game categories, each with an All option
 - Fresh starter sets of 5, 10, 15, 25, 30 or 50

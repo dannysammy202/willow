@@ -1,4 +1,4 @@
-const CACHE = 'willow-v2026-10-01-1';
+const CACHE = 'willow-v2026-10-01-2';
 const CORE = [
   '/',
   '/index.html',
