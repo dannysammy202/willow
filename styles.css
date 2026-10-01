@@ -827,16 +827,17 @@ body { letter-spacing: -0.01em; }
 }
 .game-card {
   position: relative;
-  min-height: 210px;
+  min-height: 112px;
   border: 1px solid var(--line);
   border-radius: 24px;
   background: var(--surface);
   color: var(--text);
   padding: 18px;
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr) 22px;
+  align-items: center;
+  gap: 14px;
   text-align: left;
   transition: transform .16s ease, border-color .16s ease, background .16s ease;
 }
@@ -863,17 +864,23 @@ body { letter-spacing: -0.01em; }
   border-radius: 15px;
   background: color-mix(in srgb, var(--game-accent) 32%, var(--surface));
   color: color-mix(in srgb, var(--game-accent) 75%, var(--text));
-  margin-bottom: auto;
+  margin: 0;
 }
 html[data-theme="dark"] .game-icon {
   background: color-mix(in srgb, var(--game-accent) 18%, var(--surface));
   color: var(--game-accent);
 }
 .game-icon .isax { font-size: 24px; line-height: 1; }
-.game-card-copy { display: block; margin-top: 28px; padding-right: 20px; }
+.game-card-copy {
+  display: block;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  align-self: center;
+}
 .game-card h3 {
-  margin: 0 0 7px;
-  max-width: 220px;
+  margin: 0;
+  max-width: none;
   font-size: 18px;
   line-height: 1.15;
   letter-spacing: -0.025em;
@@ -886,9 +893,9 @@ html[data-theme="dark"] .game-icon {
   line-height: 1.45;
 }
 .game-arrow {
-  position: absolute;
-  right: 17px;
-  bottom: 18px;
+  position: static;
+  justify-self: end;
+  align-self: center;
   font-size: 18px;
   color: var(--muted);
 }
@@ -914,17 +921,13 @@ textarea, input[type="text"] { border-radius: 15px; }
 @media (max-width: 520px) {
   .game-grid { grid-template-columns: 1fr; gap: 10px; }
   .game-card {
-    min-height: 0;
-    padding: 16px;
-    display: grid;
-    grid-template-columns: 48px minmax(0,1fr) 22px;
-    align-items: center;
-    gap: 14px;
+    min-height: 96px;
+    padding: 15px 16px;
   }
   .game-card::after { display: none; }
   .game-icon { margin: 0; }
   .game-card-copy { margin: 0; padding: 0; }
-  .game-card h3 { font-size: 16px; margin-bottom: 4px; }
+  .game-card h3 { font-size: 16px; margin: 0; }
   .game-card p { font-size: 12px; }
   .game-arrow { position: static; justify-self: end; }
   #screen-games .page-heading { margin-bottom: 20px; }

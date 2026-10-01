@@ -1339,5 +1339,5 @@ renderPlayers();
 navigate('reply');
 
 if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js?v=20261001-4').catch(() => {}));
+  window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js?v=20261001-5').catch(() => {}));
 }
