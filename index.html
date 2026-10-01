@@ -12,6 +12,7 @@
   <link rel="manifest" href="/manifest.webmanifest" />
   <link rel="icon" href="/icons/favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+  <link rel="stylesheet" href="https://muhammadlailil.github.io/iconsax/style/outline.css" />
   <link rel="stylesheet" href="/styles.css" />
 </head>
 <body>
@@ -24,7 +25,7 @@
       <span class="brand-copy"><strong>willow</strong><small>the right words, gently</small></span>
     </button>
     <button class="icon-button" type="button" data-nav="settings" aria-label="Settings">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15.2A3.2 3.2 0 1 0 12 8.8a3.2 3.2 0 0 0 0 6.4Z"/><path d="M19.3 13.4a7.8 7.8 0 0 0 0-2.8l1.8-1.4-1.9-3.2-2.1.8a8 8 0 0 0-2.4-1.4L14.4 3h-3.8l-.3 2.4a8 8 0 0 0-2.4 1.4L5.8 6 3.9 9.2l1.8 1.4a7.8 7.8 0 0 0 0 2.8l-1.8 1.4L5.8 18l2.1-.8a8 8 0 0 0 2.4 1.4l.3 2.4h3.8l.3-2.4a8 8 0 0 0 2.4-1.4l2.1.8 1.9-3.2-1.8-1.4Z"/></svg>
+      <span class="isax icon-setting-2" aria-hidden="true"></span>
     </button>
   </header>
 
@@ -47,7 +48,7 @@
             <label class="upload-zone" for="screenshotInput">
               <input id="screenshotInput" type="file" accept="image/png,image/jpeg,image/webp" hidden />
               <div id="uploadEmpty" class="upload-empty">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="2"/><path d="m5 17 4-4 3 3 2-2 5 5"/></svg>
+                <span class="isax icon-gallery-add upload-icon" aria-hidden="true"></span>
                 <strong>Upload a chat screenshot</strong>
                 <span>PNG, JPG or WebP, up to 10 MB</span>
               </div>
@@ -154,7 +155,7 @@
 
         <div id="gameSetup" hidden>
           <section class="surface game-setup-card">
-            <button id="backToGames" class="back-button" type="button">← Back to games</button>
+            <button id="backToGames" class="back-button" type="button"><span class="isax icon-arrow-left" aria-hidden="true"></span><span>Back to games</span></button>
             <span id="selectedGameLabel" class="eyebrow"></span>
             <h2>Who is playing?</h2>
             <p class="muted-copy">Add at least two names. Willow rotates turns automatically.</p>
@@ -222,27 +223,17 @@
   </main>
 
   <nav class="bottom-nav" aria-label="Primary navigation">
-    <button class="active" type="button" data-nav="reply">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.5 9.6 9.6 0 0 1-3.8-.8L3 21l1.7-4.2A8.4 8.4 0 1 1 21 11.5Z"/><path d="M8 10h8M8 14h5"/></svg><span>Reply</span>
-    </button>
-    <button type="button" data-nav="starters">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4M8.2 14.7A7 7 0 1 1 15.8 14.7c-.9.7-1.3 1.4-1.5 2.3h-4.6c-.2-.9-.6-1.6-1.5-2.3Z"/></svg><span>Starters</span>
-    </button>
-    <button type="button" data-nav="games">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 7h8a5 5 0 0 1 4.8 6.4l-1.1 3.8a2 2 0 0 1-3.4.8L14 15h-4l-2.3 3a2 2 0 0 1-3.4-.8l-1.1-3.8A5 5 0 0 1 8 7Z"/><path d="M7 11v4M5 13h4M16 12h.01M18 14h.01"/></svg><span>Party Games</span>
-    </button>
-    <button type="button" data-nav="history">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 2.6-6.4L3 8"/><path d="M3 4v4h4M12 7v5l3 2"/></svg><span>History</span>
-    </button>
-    <button type="button" data-nav="settings">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15.2A3.2 3.2 0 1 0 12 8.8a3.2 3.2 0 0 0 0 6.4Z"/><path d="M19.3 13.4a7.8 7.8 0 0 0 0-2.8l1.8-1.4-1.9-3.2-2.1.8a8 8 0 0 0-2.4-1.4L14.4 3h-3.8l-.3 2.4a8 8 0 0 0-2.4 1.4L5.8 6 3.9 9.2l1.8 1.4a7.8 7.8 0 0 0 0 2.8l-1.8 1.4L5.8 18l2.1-.8a8 8 0 0 0 2.4 1.4l.3 2.4h3.8l.3-2.4a8 8 0 0 0 2.4-1.4l2.1.8 1.9-3.2-1.8-1.4Z"/></svg><span>Settings</span>
-    </button>
+    <button class="active" type="button" data-nav="reply"><span class="isax icon-message-text" aria-hidden="true"></span><span>Reply</span></button>
+    <button type="button" data-nav="starters"><span class="isax icon-lamp-on" aria-hidden="true"></span><span>Starters</span></button>
+    <button type="button" data-nav="games"><span class="isax icon-game" aria-hidden="true"></span><span>Party Games</span></button>
+    <button type="button" data-nav="history"><span class="isax icon-clock" aria-hidden="true"></span><span>History</span></button>
+    <button type="button" data-nav="settings"><span class="isax icon-setting-2" aria-hidden="true"></span><span>Settings</span></button>
   </nav>
 
   <div id="categoryBackdrop" class="sheet-backdrop" hidden></div>
   <section id="categorySheet" class="bottom-sheet" aria-modal="true" aria-labelledby="categoryTitle" hidden>
     <div class="sheet-handle"></div>
-    <div class="sheet-header"><h2 id="categoryTitle">Conversation category</h2><button id="closeCategorySheet" class="icon-button" type="button" aria-label="Close">×</button></div>
+    <div class="sheet-header"><h2 id="categoryTitle">Conversation category</h2><button id="closeCategorySheet" class="icon-button" type="button" aria-label="Close"><span class="isax icon-close-circle" aria-hidden="true"></span></button></div>
     <h3>Normal conversation</h3>
     <div id="topicCategoryGrid" class="category-grid"></div>
     <h3>Conversation games</h3>
