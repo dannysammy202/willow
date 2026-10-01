@@ -89,15 +89,6 @@ button:disabled { opacity: 0.48; cursor: not-allowed; }
   letter-spacing: -0.04em;
   font-weight: 850;
 }
-.brand-copy small {
-  display: block;
-  margin-top: 5px;
-  font-size: 10px;
-  line-height: 1.1;
-  color: var(--muted);
-  font-weight: 750;
-  letter-spacing: 0.01em;
-}
 .icon-button {
   width: 42px;
   height: 42px;
@@ -469,7 +460,6 @@ html[data-theme="light"] .feature-card { background: var(--sage); color: #FFF9F2
   font-weight: 900;
 }
 .game-card h3 { margin: 18px 0 6px; font-size: 17px; line-height: 1.15; }
-.game-card p { margin: 0; color: var(--muted); font-size: 12px; }
 .game-setup-card h2 { margin: 8px 0 5px; font-size: 28px; }
 .player-input-row { display: grid; grid-template-columns: 1fr auto; gap: 9px; margin-top: 16px; }
 .player-input-row .secondary-button { min-width: 74px; }
@@ -508,8 +498,6 @@ html[data-theme="light"] .feature-card { background: var(--sage); color: #FFF9F2
 .truth-dare-choice button:last-child { background: var(--blush); color: #4E3D34; }
 
 .settings-card .segmented { margin-bottom: 18px; }
-.privacy-card { margin-top: 14px; padding: 18px; }
-.privacy-card p { margin: 7px 0 0; color: var(--muted); font-size: 13px; line-height: 1.55; }
 
 .bottom-nav {
   position: fixed;
@@ -919,7 +907,6 @@ html[data-theme="dark"] .game-icon {
 textarea, input[type="text"] { border-radius: 15px; }
 .primary-button, .secondary-button, .select-button { border-radius: 14px; }
 .reply-card, .starter-card, .history-card { border-radius: 20px; }
-.privacy-card { border-radius: 20px; }
 
 .bottom-nav button.active .isax { transform: translateY(-1px); }
 .bottom-nav .isax { transition: transform .16s ease; }
@@ -987,4 +974,15 @@ html[data-theme="dark"] .opener-audiences .chip.active {
 
 @media (min-width: 700px) {
   .bottom-nav { width: min(700px, calc(100% - 32px)); }
+}
+
+
+/* Production copy trim */
+.page-heading { margin-bottom: 16px; }
+.page-heading h1 { margin-bottom: 0; }
+#openerMore,
+#starterMore { margin-top: 14px; }
+.game-card-copy { margin-top: 0; align-self: center; }
+@media (max-width: 520px) {
+  .game-card-copy { margin-top: 0; }
 }

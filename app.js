@@ -641,8 +641,8 @@ function renderCategorySheet() {
   const gameSection = $('#gameCategorySection');
 
   if (state.categoryTarget === 'opener') {
-    $('#categoryTitle').textContent = 'Opener category';
-    $('#categorySectionTitle').textContent = 'Opener style';
+    $('#categoryTitle').textContent = 'Category';
+    $('#categorySectionTitle').textContent = 'Openers';
     gameSection.hidden = true;
     $('#topicCategoryGrid').innerHTML = OPENER_CATEGORIES.map(item => `
       <button type="button" class="${state.openerCategory === item ? 'active' : ''}" data-category-choice="${escapeHtml(item)}">${escapeHtml(item)}</button>
@@ -651,8 +651,8 @@ function renderCategorySheet() {
   }
 
   gameSection.hidden = false;
-  $('#categoryTitle').textContent = 'Conversation category';
-  $('#categorySectionTitle').textContent = 'Normal conversation';
+  $('#categoryTitle').textContent = 'Category';
+  $('#categorySectionTitle').textContent = 'Topics';
   const selected = state.categoryTarget === 'browse' ? state.starterCategory : state.personalCategory;
   $('#topicCategoryGrid').innerHTML = [
     `<button type="button" class="${selected === 'All topics' ? 'active' : ''}" data-category-choice="All topics">All</button>`,
@@ -734,7 +734,6 @@ function renderGames() {
       <span class="game-icon"><span class="isax ${iconMap[name] || 'icon-game'}" aria-hidden="true"></span></span>
       <span class="game-card-copy">
         <h3>${escapeHtml(name)}</h3>
-        <p>${escapeHtml(game.description)}</p>
       </span>
       <span class="isax icon-arrow-right-3 game-arrow" aria-hidden="true"></span>
     </button>
@@ -1340,5 +1339,5 @@ renderPlayers();
 navigate('reply');
 
 if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js?v=20261001-3').catch(() => {}));
+  window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js?v=20261001-4').catch(() => {}));
 }

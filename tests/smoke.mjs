@@ -9,7 +9,7 @@ const app = fs.readFileSync(path.join(root, 'app.js'), 'utf8');
 const styles = fs.readFileSync(path.join(root, 'styles.css'), 'utf8');
 const manifest = JSON.parse(fs.readFileSync(path.join(root, 'manifest.webmanifest'), 'utf8'));
 
-for (const text of ['Willow', 'Openers', 'Party Games', 'Generate 5 replies', 'Personalised', 'What are we replying to?', 'Stuck on what to say?']) {
+for (const text of ['Willow', 'Openers', 'Games', 'Generate 5 replies', 'Personalised', 'Reply', 'Starters']) {
   assert.ok(index.includes(text), `index.html should include ${text}`);
 }
 
@@ -20,7 +20,7 @@ assert.ok(app.includes('generateOpeners'), 'Openers should support AI generation
 assert.ok(app.includes("'School'"), 'School category should exist');
 assert.ok(app.includes("'All games'"), 'Game generation support should remain available');
 assert.ok(app.includes("'Nigerian life', 'All games'"), 'Starters quick categories should expose Games');
-assert.ok(index.includes('<h3>Conversation games</h3>'), 'Conversation games should remain available inside Starters');
+assert.ok(index.includes('<h3>Games</h3>'), 'Conversation games should remain available inside Starters');
 assert.ok(index.includes('id="gameCategoryGrid"'), 'Conversation game category grid should exist');
 assert.ok(app.includes('5, 10, 15, 25, 30, 50'), 'All fresh-set sizes should exist');
 assert.ok(app.includes('Truth or Dare'), 'Truth or Dare should exist');
@@ -68,3 +68,8 @@ function mockResponse() {
 }
 
 console.log('Willow smoke tests passed.');
+
+assert.ok(!index.includes('the right words, gently</small>'), 'Header tagline should be removed from the production UI');
+assert.ok(!index.includes('Private by default'), 'Implementation copy should not appear in production settings');
+assert.ok(!index.includes('Pick a game, add the players'), 'Redundant game helper copy should be removed');
+assert.ok(!index.includes('Pick a topic, get one natural question'), 'Redundant starter helper copy should be removed');
