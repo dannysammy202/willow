@@ -464,11 +464,28 @@ function renderHistory() {
 }
 
 function renderGames() {
-  $('#gameGrid').innerHTML = Object.entries(PARTY_GAMES).map(([name, game]) => `
-    <button type="button" class="game-card" data-game="${escapeHtml(name)}">
-      <span class="game-icon">${escapeHtml(game.icon)}</span>
-      <h3>${escapeHtml(name)}</h3>
-      <p>${escapeHtml(game.description)}</p>
+  const iconMap = {
+    'Truth or Dare': 'icon-messages-2',
+    'Never Have I Ever': 'icon-emoji-happy',
+    'What Would You Do?': 'icon-message-question',
+    'If You Had To Choose': 'icon-arrow-swap-horizontal',
+    'Who Is More Likely To?': 'icon-people',
+    'How Well Do You Know Me?': 'icon-heart',
+    'Rank These': 'icon-ranking',
+    'Agree or Disagree': 'icon-like-shapes',
+    'Red Flag, Green Flag or Depends?': 'icon-flag',
+    'Petty or Valid?': 'icon-judge',
+    'Quickfire': 'icon-flash',
+    'Hot Seat': 'icon-profile-2user'
+  };
+  $('#gameGrid').innerHTML = Object.entries(PARTY_GAMES).map(([name, game], index) => `
+    <button type="button" class="game-card game-card--${(index % 4) + 1}" data-game="${escapeHtml(name)}">
+      <span class="game-icon"><span class="isax ${iconMap[name] || 'icon-game'}" aria-hidden="true"></span></span>
+      <span class="game-card-copy">
+        <h3>${escapeHtml(name)}</h3>
+        <p>${escapeHtml(game.description)}</p>
+      </span>
+      <span class="isax icon-arrow-right-3 game-arrow" aria-hidden="true"></span>
     </button>
   `).join('');
 }
