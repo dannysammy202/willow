@@ -411,16 +411,13 @@ function renderCategorySheet() {
     `<button type="button" class="${selected === 'All topics' ? 'active' : ''}" data-category-choice="All topics">All</button>`,
     ...TOPIC_CATEGORIES.map(item => `<button type="button" class="${selected === item ? 'active' : ''}" data-category-choice="${escapeHtml(item)}">${escapeHtml(item)}</button>`)
   ].join('');
-  $('#gameCategoryGrid').innerHTML = [
-    `<button type="button" class="${selected === 'All games' ? 'active' : ''}" data-category-choice="All games">All</button>`,
-    ...CONVERSATION_GAMES.map(item => `<button type="button" class="${selected === item ? 'active' : ''}" data-category-choice="${escapeHtml(item)}">${escapeHtml(item)}</button>`)
-  ].join('');
+  $('#gameCategoryGrid').innerHTML = CONVERSATION_GAMES.map(item => `<button type="button" class="${selected === item ? 'active' : ''}" data-category-choice="${escapeHtml(item)}">${escapeHtml(item)}</button>`).join('');
 }
 
 function renderStarterBrowse() {
-  const quick = ['All topics', 'School', 'Everyday', 'Deep', 'Nigerian life', 'All games'];
+  const quick = ['All topics', 'School', 'Everyday', 'Deep', 'Nigerian life'];
   $('#quickCategories').innerHTML = quick.map(item => `
-    <button type="button" class="chip ${state.starterCategory === item ? 'active' : ''}" data-quick-category="${escapeHtml(item)}">${item === 'All topics' ? 'All' : item === 'All games' ? 'Games' : escapeHtml(item)}</button>
+    <button type="button" class="chip ${state.starterCategory === item ? 'active' : ''}" data-quick-category="${escapeHtml(item)}">${item === 'All topics' ? 'All' : escapeHtml(item)}</button>
   `).join('') + `<button type="button" class="chip" id="openCategorySheet">More</button>`;
 
   const pool = promptsForCategory(state.starterCategory);
@@ -429,8 +426,8 @@ function renderStarterBrowse() {
     <span class="feature-category">${escapeHtml(feature.label)}</span>
     <div class="feature-question">${escapeHtml(feature.text)}</div>
     <div class="feature-actions">
-      <button type="button" class="copy-feature" data-copy="${encodeURIComponent(feature.text)}">Copy</button>
-      <button type="button" class="next-feature" id="nextFeature">Next</button>
+      <button type="button" class="copy-feature" data-copy="${encodeURIComponent(feature.text)}" aria-label="Copy starter"><span class="button-icon" aria-hidden="true">⧉</span><span>Copy</span></button>
+      <button type="button" class="next-feature" id="nextFeature" aria-label="Show next starter"><span>Next</span><span class="button-icon arrow-icon" aria-hidden="true">→</span></button>
     </div>
   `;
 
@@ -439,7 +436,7 @@ function renderStarterBrowse() {
 }
 
 function starterCard(item) {
-  return `<article class="starter-card"><span class="result-label">${escapeHtml(item.label || 'Starter')}</span><p>${escapeHtml(item.text || item)}</p><button type="button" class="result-copy" data-copy="${encodeURIComponent(item.text || item)}">Copy</button></article>`;
+  return `<article class="starter-card"><span class="result-label">${escapeHtml(item.label || 'Starter')}</span><p>${escapeHtml(item.text || item)}</p><button type="button" class="result-copy" data-copy="${encodeURIComponent(item.text || item)}"><span class="button-icon" aria-hidden="true">⧉</span><span>Copy</span></button></article>`;
 }
 
 function replyCard(item) {
