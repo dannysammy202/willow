@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#2B211B" />
+  <meta name="description" content="Willow helps you find the right words, gently." />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="Willow" />
+  <title>Willow · the right words, gently</title>
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="icon" href="/icons/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <button class="brand-button" type="button" data-nav="reply" aria-label="Willow home">
+      <svg class="brand-sprig" viewBox="0 0 64 80" aria-hidden="true">
+        <path d="M31 73c6-15 6-31 5-47-.4-9 .2-15 3-22" fill="none" stroke="#6E8F63" stroke-width="4.5" stroke-linecap="round"/>
+        <path d="M36 18c9-8 18-8 22-4-5 8-13 11-22 10M33 31c-9-7-18-8-23-4 4 8 13 11 22 10M36 43c9-7 17-7 21-3-4 7-12 10-21 9M31 55c-8-7-16-8-21-4 4 7 12 10 20 9M34 64c8-6 15-6 19-2-4 6-11 8-18 8" fill="#B7CC9F"/>
+      </svg>
+      <span class="brand-copy"><strong>willow</strong><small>the right words, gently</small></span>
+    </button>
+    <button class="icon-button" type="button" data-nav="settings" aria-label="Settings">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15.2A3.2 3.2 0 1 0 12 8.8a3.2 3.2 0 0 0 0 6.4Z"/><path d="M19.3 13.4a7.8 7.8 0 0 0 0-2.8l1.8-1.4-1.9-3.2-2.1.8a8 8 0 0 0-2.4-1.4L14.4 3h-3.8l-.3 2.4a8 8 0 0 0-2.4 1.4L5.8 6 3.9 9.2l1.8 1.4a7.8 7.8 0 0 0 0 2.8l-1.8 1.4L5.8 18l2.1-.8a8 8 0 0 0 2.4 1.4l.3 2.4h3.8l.3-2.4a8 8 0 0 0 2.4-1.4l2.1.8 1.9-3.2-1.8-1.4Z"/></svg>
+    </button>
+  </header>
+
+  <main class="app-main">
+    <section class="screen active" id="screen-reply" aria-labelledby="replyTitle">
+      <div class="page-wrap">
+        <div class="page-heading">
+          <h1 id="replyTitle">What are we replying to?</h1>
+          <p>Share the chat, paste the message, or explain what happened.</p>
+        </div>
+
+        <section class="surface composer-card">
+          <div class="segmented three" role="tablist" aria-label="Reply input type">
+            <button class="active" type="button" data-reply-mode="screenshot">Screenshot</button>
+            <button type="button" data-reply-mode="message">Message</button>
+            <button type="button" data-reply-mode="context">Context</button>
+          </div>
+
+          <div class="reply-panel active" id="reply-panel-screenshot">
+            <label class="upload-zone" for="screenshotInput">
+              <input id="screenshotInput" type="file" accept="image/png,image/jpeg,image/webp" hidden />
+              <div id="uploadEmpty" class="upload-empty">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="2"/><path d="m5 17 4-4 3 3 2-2 5 5"/></svg>
+                <strong>Upload a chat screenshot</strong>
+                <span>PNG, JPG or WebP, up to 10 MB</span>
+              </div>
+              <div id="uploadPreview" class="upload-preview" hidden>
+                <img id="previewImage" alt="Chat screenshot preview" />
+                <div class="upload-preview-meta">
+                  <span><strong id="previewName">Screenshot</strong><small id="previewSize"></small></span>
+                  <button class="mini-button" type="button" id="removeScreenshot">Remove</button>
+                </div>
+              </div>
+            </label>
+            <label class="field-label" for="screenshotContext">Anything else Willow should know?</label>
+            <textarea id="screenshotContext" rows="4" placeholder="Add anything the screenshot does not explain."></textarea>
+          </div>
+
+          <div class="reply-panel" id="reply-panel-message">
+            <label class="field-label" for="messageInput">Paste the message</label>
+            <textarea id="messageInput" rows="5" maxlength="4000" placeholder="Paste what they sent you..."></textarea>
+            <label class="field-label" for="messageContext">Context <span>Optional</span></label>
+            <textarea id="messageContext" rows="3" placeholder="What happened before this? Who is this person to you?"></textarea>
+          </div>
+
+          <div class="reply-panel" id="reply-panel-context">
+            <label class="field-label" for="contextInput">Tell Willow what happened</label>
+            <textarea id="contextInput" rows="6" placeholder="Explain the situation and what you want to say."></textarea>
+          </div>
+
+          <div class="intent-heading">
+            <span>What are you trying to do?</span>
+            <button id="intentToggle" type="button" class="text-button">More</button>
+          </div>
+          <div id="intentChips" class="reply-intents chip-wrap"></div>
+
+          <button id="generateReplies" type="button" class="primary-button">Generate 5 replies</button>
+        </section>
+
+        <section id="replyResults" class="result-stack" aria-live="polite"></section>
+      </div>
+    </section>
+
+    <section class="screen" id="screen-starters" aria-labelledby="startersTitle">
+      <div class="page-wrap">
+        <div class="page-heading">
+          <h1 id="startersTitle">What should we talk about?</h1>
+          <p>Conversation starters built around everyday life in Nigeria.</p>
+        </div>
+
+        <div class="segmented two starter-tabs">
+          <button class="active" type="button" data-starter-tab="browse">Browse</button>
+          <button type="button" data-starter-tab="personalised">Personalised</button>
+        </div>
+
+        <div id="starterBrowse">
+          <div id="quickCategories" class="horizontal-chips"></div>
+
+          <section id="starterFeature" class="surface feature-card"></section>
+
+          <h2 class="section-title">More like this</h2>
+          <div id="starterMore" class="result-stack compact"></div>
+
+          <section class="surface fresh-card">
+            <h2>Need a fresh set?</h2>
+            <div id="starterCounts" class="count-grid"></div>
+            <button id="generateFresh" type="button" class="primary-button">Generate fresh starters</button>
+          </section>
+          <div id="freshResults" class="result-stack compact"></div>
+        </div>
+
+        <div id="starterPersonalised" hidden>
+          <section class="surface personalised-card">
+            <label class="field-label">Who are you talking to?</label>
+            <div id="relationshipChips" class="chip-wrap"></div>
+
+            <label class="field-label">Conversation category</label>
+            <button id="openPersonalCategory" type="button" class="select-button">All topics</button>
+
+            <label class="field-label">Vibe</label>
+            <div id="vibeChips" class="chip-wrap"></div>
+
+            <label class="field-label" for="personalContext">Optional context</label>
+            <textarea id="personalContext" rows="4" placeholder="Anything Willow should know about the person or situation?"></textarea>
+
+            <label class="field-label">How many?</label>
+            <div id="personalCounts" class="count-grid"></div>
+
+            <button id="generatePersonalised" type="button" class="primary-button">Generate starters</button>
+          </section>
+          <div id="personalResults" class="result-stack compact"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen" id="screen-games" aria-labelledby="gamesTitle">
+      <div class="page-wrap">
+        <div class="page-heading">
+          <span class="eyebrow">Pass the phone</span>
+          <h1 id="gamesTitle">Party Games</h1>
+          <p>Pick a game, add the players and keep everything on one phone.</p>
+        </div>
+
+        <div id="gameHome">
+          <div id="gameGrid" class="game-grid"></div>
+        </div>
+
+        <div id="gameSetup" hidden>
+          <section class="surface game-setup-card">
+            <button id="backToGames" class="back-button" type="button">← Back to games</button>
+            <span id="selectedGameLabel" class="eyebrow"></span>
+            <h2>Who is playing?</h2>
+            <p class="muted-copy">Add at least two names. Willow rotates turns automatically.</p>
+            <div class="player-input-row">
+              <input id="playerName" type="text" maxlength="24" placeholder="Player name" />
+              <button id="addPlayer" type="button" class="secondary-button">Add</button>
+            </div>
+            <div id="playerChips" class="chip-wrap player-chips"></div>
+            <button id="startGame" type="button" class="primary-button" disabled>Start game</button>
+          </section>
+        </div>
+
+        <div id="gamePlay" hidden>
+          <section class="surface game-play-card">
+            <div class="turn-row"><span id="turnLabel" class="eyebrow"></span><span id="roundLabel" class="muted-copy"></span></div>
+            <div id="truthDareChoice" class="truth-dare-choice" hidden>
+              <button type="button" data-truth-dare="truth">Truth</button>
+              <button type="button" data-truth-dare="dare">Dare</button>
+            </div>
+            <div id="gamePrompt" class="game-prompt"></div>
+            <div class="game-actions">
+              <button id="skipPrompt" type="button" class="secondary-button">Skip</button>
+              <button id="nextTurn" type="button" class="primary-button">Next turn</button>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen" id="screen-history" aria-labelledby="historyTitle">
+      <div class="page-wrap">
+        <div class="page-heading with-action">
+          <div><h1 id="historyTitle">History</h1><p>Your recent Willow sessions stay on this device.</p></div>
+          <button id="clearHistory" class="text-button danger" type="button">Clear</button>
+        </div>
+        <div id="historyList" class="result-stack compact"></div>
+      </div>
+    </section>
+
+    <section class="screen" id="screen-settings" aria-labelledby="settingsTitle">
+      <div class="page-wrap">
+        <div class="page-heading">
+          <h1 id="settingsTitle">Settings</h1>
+          <p>Set Willow up around how you normally text.</p>
+        </div>
+
+        <section class="surface settings-card">
+          <label class="field-label">Appearance</label>
+          <div class="segmented two">
+            <button id="themeLight" type="button">Light</button>
+            <button id="themeDark" type="button">Dark</button>
+          </div>
+
+          <label class="field-label" for="textingStyle">Your texting style</label>
+          <textarea id="textingStyle" rows="5" placeholder="For example: short messages, Nigerian English, light Pidgin when it fits, no long paragraphs."></textarea>
+          <button id="saveSettings" type="button" class="primary-button">Save style</button>
+        </section>
+
+        <section class="surface privacy-card">
+          <strong>Private by default</strong>
+          <p>Your history and texting preference stay in this browser. Your Gemini key lives in Vercel, not inside Willow settings.</p>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <nav class="bottom-nav" aria-label="Primary navigation">
+    <button class="active" type="button" data-nav="reply">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.5 9.6 9.6 0 0 1-3.8-.8L3 21l1.7-4.2A8.4 8.4 0 1 1 21 11.5Z"/><path d="M8 10h8M8 14h5"/></svg><span>Reply</span>
+    </button>
+    <button type="button" data-nav="starters">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4M8.2 14.7A7 7 0 1 1 15.8 14.7c-.9.7-1.3 1.4-1.5 2.3h-4.6c-.2-.9-.6-1.6-1.5-2.3Z"/></svg><span>Starters</span>
+    </button>
+    <button type="button" data-nav="games">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 7h8a5 5 0 0 1 4.8 6.4l-1.1 3.8a2 2 0 0 1-3.4.8L14 15h-4l-2.3 3a2 2 0 0 1-3.4-.8l-1.1-3.8A5 5 0 0 1 8 7Z"/><path d="M7 11v4M5 13h4M16 12h.01M18 14h.01"/></svg><span>Party Games</span>
+    </button>
+    <button type="button" data-nav="history">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 2.6-6.4L3 8"/><path d="M3 4v4h4M12 7v5l3 2"/></svg><span>History</span>
+    </button>
+    <button type="button" data-nav="settings">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15.2A3.2 3.2 0 1 0 12 8.8a3.2 3.2 0 0 0 0 6.4Z"/><path d="M19.3 13.4a7.8 7.8 0 0 0 0-2.8l1.8-1.4-1.9-3.2-2.1.8a8 8 0 0 0-2.4-1.4L14.4 3h-3.8l-.3 2.4a8 8 0 0 0-2.4 1.4L5.8 6 3.9 9.2l1.8 1.4a7.8 7.8 0 0 0 0 2.8l-1.8 1.4L5.8 18l2.1-.8a8 8 0 0 0 2.4 1.4l.3 2.4h3.8l.3-2.4a8 8 0 0 0 2.4-1.4l2.1.8 1.9-3.2-1.8-1.4Z"/></svg><span>Settings</span>
+    </button>
+  </nav>
+
+  <div id="categoryBackdrop" class="sheet-backdrop" hidden></div>
+  <section id="categorySheet" class="bottom-sheet" aria-modal="true" aria-labelledby="categoryTitle" hidden>
+    <div class="sheet-handle"></div>
+    <div class="sheet-header"><h2 id="categoryTitle">Conversation category</h2><button id="closeCategorySheet" class="icon-button" type="button" aria-label="Close">×</button></div>
+    <h3>Normal conversation</h3>
+    <div id="topicCategoryGrid" class="category-grid"></div>
+    <h3>Conversation games</h3>
+    <div id="gameCategoryGrid" class="category-grid"></div>
+  </section>
+
+  <div id="loadingOverlay" class="loading-overlay" hidden>
+    <div class="loading-card"><span class="spinner"></span><strong id="loadingText">Finding the right words...</strong></div>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="/app.js" defer></script>
+</body>
+</html>
