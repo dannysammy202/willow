@@ -425,8 +425,8 @@ function renderStarterBrowse() {
     <span class="feature-category">${escapeHtml(feature.label)}</span>
     <div class="feature-question">${escapeHtml(feature.text)}</div>
     <div class="feature-actions">
-      <button type="button" class="copy-feature" data-copy="${encodeURIComponent(feature.text)}" aria-label="Copy starter"><span class="button-icon" aria-hidden="true">⧉</span><span>Copy</span></button>
-      <button type="button" class="next-feature" id="nextFeature" aria-label="Show next starter"><span>Next</span><span class="button-icon arrow-icon" aria-hidden="true">→</span></button>
+      <button type="button" class="copy-feature" data-copy="${encodeURIComponent(feature.text)}" aria-label="Copy starter"><span class="isax icon-copy button-icon" aria-hidden="true"></span><span>Copy</span></button>
+      <button type="button" class="next-feature" id="nextFeature" aria-label="Show next starter"><span>Next</span><span class="isax icon-arrow-right button-icon" aria-hidden="true"></span></button>
     </div>
   `;
 
@@ -435,13 +435,13 @@ function renderStarterBrowse() {
 }
 
 function starterCard(item) {
-  return `<article class="starter-card"><span class="result-label">${escapeHtml(item.label || 'Starter')}</span><p>${escapeHtml(item.text || item)}</p><button type="button" class="result-copy" data-copy="${encodeURIComponent(item.text || item)}"><span class="button-icon" aria-hidden="true">⧉</span><span>Copy</span></button></article>`;
+  return `<article class="starter-card"><span class="result-label">${escapeHtml(item.label || 'Starter')}</span><p>${escapeHtml(item.text || item)}</p><button type="button" class="result-copy" data-copy="${encodeURIComponent(item.text || item)}"><span class="isax icon-copy button-icon" aria-hidden="true"></span><span>Copy</span></button></article>`;
 }
 
 function replyCard(item) {
   const label = item.label || 'Reply';
   const text = item.text || item;
-  return `<article class="reply-card"><span class="result-label">${escapeHtml(label)}</span><p>${escapeHtml(text)}</p><button type="button" class="result-copy" data-copy="${encodeURIComponent(text)}">Copy</button></article>`;
+  return `<article class="reply-card"><span class="result-label">${escapeHtml(label)}</span><p>${escapeHtml(text)}</p><button type="button" class="result-copy" data-copy="${encodeURIComponent(text)}"><span class="isax icon-copy button-icon" aria-hidden="true"></span><span>Copy</span></button></article>`;
 }
 
 function addHistory(type, label, preview) {
@@ -918,7 +918,7 @@ document.addEventListener('click', event => {
     $('#starterFeature').innerHTML = `
       <span class="feature-category">${escapeHtml(next.label)}</span>
       <div class="feature-question">${escapeHtml(next.text)}</div>
-      <div class="feature-actions"><button type="button" class="copy-feature" data-copy="${encodeURIComponent(next.text)}">Copy</button><button type="button" class="next-feature" id="nextFeature">Next</button></div>`;
+      <div class="feature-actions"><button type="button" class="copy-feature" data-copy="${encodeURIComponent(next.text)}"><span class="isax icon-copy button-icon" aria-hidden="true"></span><span>Copy</span></button><button type="button" class="next-feature" id="nextFeature"><span>Next</span><span class="isax icon-arrow-right button-icon" aria-hidden="true"></span></button></div>`;
   }
 });
 
