@@ -12,7 +12,9 @@ const TOPIC_CATEGORIES = [
 const CONVERSATION_GAMES = [
   'Truth or Dare', 'Never Have I Ever', 'What Would You Do?', 'If You Had To Choose',
   'Who Is More Likely To?', 'How Well Do You Know Me?', 'Rank These', 'Agree or Disagree',
-  'Red Flag, Green Flag or Depends?', 'Petty or Valid?'
+  'Red Flag, Green Flag or Depends?', 'Petty or Valid?', 'This or That', 'Would You Rather',
+  'One Has To Go', 'Finish My Sentence', 'Guess My Answer', 'Two Truths and a Lie',
+  'First Impressions', 'Rate It 1 to 10', 'Confessions'
 ];
 
 
@@ -373,6 +375,60 @@ const GAME_STARTER_BANK = {
     'Removing someone from Close Friends after an argument. Petty or valid?',
     'Not inviting someone because they never invite you anywhere. Petty or valid?',
     'Refusing to double text after being left on read. Petty or valid?'
+  ],
+  'This or That': [
+    'This or that: calls or texts?',
+    'This or that: soft life or big ambition?',
+    'This or that: Lagos night out or quiet evening at home?',
+    'This or that: save the money or spend it on the experience?'
+  ],
+  'Would You Rather': [
+    'Would you rather always have stable power or unlimited data?',
+    'Would you rather know what people think of you or never care what they think?',
+    'Would you rather get free food for a year or free transport for a year?',
+    'Would you rather relive your best year or skip ahead five years?'
+  ],
+  'One Has To Go': [
+    'One has to go: jollof rice, fried rice, suya or shawarma.',
+    'One has to go: WhatsApp, Instagram, TikTok or X.',
+    'One has to go: calls, texts, voice notes or video calls.',
+    'One has to go: money, peace, love or free time.'
+  ],
+  'Finish My Sentence': [
+    'Finish this sentence: I know I am comfortable around someone when...',
+    'Finish this sentence: My toxic trait is...',
+    'Finish this sentence: A perfect weekend starts with...',
+    'Finish this sentence: The quickest way to annoy me is...'
+  ],
+  'Guess My Answer': [
+    'Guess my answer: what do I spend too much money on?',
+    'Guess my answer: where would I travel first if the flight was free?',
+    'Guess my answer: what is my biggest dating turn-off?',
+    'Guess my answer: what would I choose for my last meal?'
+  ],
+  'Two Truths and a Lie': [
+    'Say two true things and one lie about your childhood.',
+    'Say two true things and one lie about your dating history.',
+    'Say two true things and one lie about money.',
+    'Say two true things and one lie about something you have done this year.'
+  ],
+  'First Impressions': [
+    'What was your first impression of the person to your left?',
+    'Who here surprised you most after you got to know them?',
+    'What is one first impression people often get wrong about you?',
+    'Who here seemed the quietest when you first met?'
+  ],
+  'Rate It 1 to 10': [
+    'Rate your texting skills from 1 to 10.',
+    'Rate your current work-life balance from 1 to 10.',
+    'Rate how dramatic your friend group is from 1 to 10.',
+    'Rate your ability to keep a secret from 1 to 10.'
+  ],
+  'Confessions': [
+    'Confess something harmless you have never told this group.',
+    'Confess the pettiest thing you have done after being annoyed.',
+    'Confess one opinion you usually keep to yourself.',
+    'Confess something you pretend not to care about but actually do.'
   ]
 };
 
@@ -423,7 +479,16 @@ const PARTY_GAMES = {
       'What is a personal rule you refuse to break?', 'What is something you used to care about but no longer do?',
       'What is one risk you are glad you took?', 'What is one thing you want to get better at this year?'
     ]
-  }
+  },
+  'This or That': { icon: 'TT', description: 'Pick one. No long explanations.', prompts: GAME_STARTER_BANK['This or That'] },
+  'Would You Rather': { icon: 'WR', description: 'Two choices. Choose your side.', prompts: GAME_STARTER_BANK['Would You Rather'] },
+  'One Has To Go': { icon: 'OG', description: 'Remove one option and defend it.', prompts: GAME_STARTER_BANK['One Has To Go'] },
+  'Finish My Sentence': { icon: 'FS', description: 'Complete the line honestly.', prompts: GAME_STARTER_BANK['Finish My Sentence'] },
+  'Guess My Answer': { icon: 'GA', description: 'Predict what the other person will say.', prompts: GAME_STARTER_BANK['Guess My Answer'] },
+  'Two Truths and a Lie': { icon: '2T', description: 'Find the lie.', prompts: GAME_STARTER_BANK['Two Truths and a Lie'] },
+  'First Impressions': { icon: 'FI', description: 'Say what you thought at first.', prompts: GAME_STARTER_BANK['First Impressions'] },
+  'Rate It 1 to 10': { icon: '10', description: 'Give it a score, then explain.', prompts: GAME_STARTER_BANK['Rate It 1 to 10'] },
+  'Confessions': { icon: 'CF', description: 'Say what you usually keep to yourself.', prompts: GAME_STARTER_BANK['Confessions'] }
 };
 
 const state = {
@@ -727,7 +792,16 @@ function renderGames() {
     'Red Flag, Green Flag or Depends?': 'icon-flag',
     'Petty or Valid?': 'icon-judge',
     'Quickfire': 'icon-flash',
-    'Hot Seat': 'icon-profile-2user'
+    'Hot Seat': 'icon-profile-2user',
+    'This or That': 'icon-arrow-swap-horizontal',
+    'Would You Rather': 'icon-message-question',
+    'One Has To Go': 'icon-close-circle',
+    'Finish My Sentence': 'icon-messages-2',
+    'Guess My Answer': 'icon-message-question',
+    'Two Truths and a Lie': 'icon-emoji-happy',
+    'First Impressions': 'icon-people',
+    'Rate It 1 to 10': 'icon-ranking',
+    'Confessions': 'icon-heart'
   };
   $('#gameGrid').innerHTML = Object.entries(PARTY_GAMES).map(([name, game], index) => `
     <button type="button" class="game-card game-card--${(index % 4) + 1}" data-game="${escapeHtml(name)}">
@@ -1339,5 +1413,5 @@ renderPlayers();
 navigate('reply');
 
 if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js?v=20261001-5').catch(() => {}));
+  window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js?v=20261001-6').catch(() => {}));
 }

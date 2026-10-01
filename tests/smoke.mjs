@@ -73,3 +73,7 @@ assert.ok(!index.includes('the right words, gently</small>'), 'Header tagline sh
 assert.ok(!index.includes('Private by default'), 'Implementation copy should not appear in production settings');
 assert.ok(!index.includes('Pick a game, add the players'), 'Redundant game helper copy should be removed');
 assert.ok(!index.includes('Pick a topic, get one natural question'), 'Redundant starter helper copy should be removed');
+
+for (const game of ['This or That', 'Would You Rather', 'One Has To Go', 'Finish My Sentence', 'Guess My Answer', 'Two Truths and a Lie', 'First Impressions', 'Rate It 1 to 10', 'Confessions']) {
+  assert.ok(app.includes(game), `Games should include ${game}`);
+}
