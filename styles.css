@@ -696,3 +696,118 @@ html[data-theme="light"] .bottom-nav button.active { color: var(--sage); }
   .feature-card .feature-question { font-size: clamp(29px, 8vw, 36px); }
   #starterMore .result-copy { width: 100%; }
 }
+
+
+/* Willow UI polish — tighter mobile-first hierarchy */
+.app-header {
+  height: 68px;
+  padding-inline: 18px;
+}
+.brand-sprig { width: 30px; height: 39px; }
+.brand-copy strong { font-size: 21px; }
+.icon-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 14px;
+}
+.page-wrap {
+  width: min(100%, 680px);
+  padding: 24px 18px 32px;
+}
+.page-heading { margin-bottom: 20px; }
+.page-heading h1 {
+  font-size: clamp(29px, 7.8vw, 40px);
+  line-height: 1.08;
+}
+.page-heading p {
+  margin-top: 9px;
+  max-width: 560px;
+}
+.surface { border-radius: 22px; }
+.starter-tabs { margin-bottom: 16px; }
+.horizontal-chips { gap: 8px; padding-bottom: 14px; }
+.horizontal-chips .chip {
+  min-height: 40px;
+  padding-inline: 14px;
+  border-radius: 999px;
+  font-size: 14px;
+}
+.feature-card {
+  min-height: 250px;
+  padding: 20px;
+  border-radius: 24px;
+}
+.feature-card .feature-question {
+  margin: 18px 0 24px;
+  font-size: clamp(27px, 7vw, 35px);
+  line-height: 1.18;
+}
+.feature-actions button {
+  min-height: 50px;
+  border-radius: 14px;
+}
+.section-title {
+  margin: 24px 2px 12px;
+  font-size: 20px;
+}
+#starterMore {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
+}
+#starterMore .starter-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 190px;
+  padding: 18px;
+  border-radius: 20px;
+}
+#starterMore .starter-card p { flex: 1; }
+#starterMore .result-copy {
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  margin-top: 14px;
+}
+.fresh-card {
+  padding: 18px;
+  border-radius: 20px;
+}
+.count-grid button { min-height: 48px; }
+.bottom-nav {
+  min-height: calc(72px + var(--safe-bottom));
+  padding-top: 5px;
+}
+.bottom-nav button {
+  gap: 5px;
+  border-radius: 13px;
+}
+.bottom-nav button.active {
+  background: color-mix(in srgb, var(--sage) 16%, transparent);
+}
+html[data-theme="dark"] .bottom-nav button.active { color: var(--sage-light); }
+.bottom-nav .isax { font-size: 22px; }
+.bottom-nav span { font-size: 9.5px; font-weight: 700; }
+.bottom-sheet { padding-inline: 18px; }
+.sheet-header h2 { font-size: 23px; }
+.category-grid button { min-height: 50px; }
+.result-copy .isax,
+.feature-actions .isax { flex: 0 0 auto; }
+
+@media (max-width: 520px) {
+  body { padding-bottom: calc(78px + var(--safe-bottom)); }
+  .page-wrap { padding: 22px 16px 28px; }
+  .feature-card { min-height: 270px; }
+  .feature-card .feature-question { font-size: clamp(27px, 7.7vw, 33px); }
+  #starterMore { grid-template-columns: 1fr; }
+  #starterMore .starter-card { min-height: 0; }
+  .feature-actions { grid-template-columns: .9fr 1.1fr; }
+}
+
+@media (min-width: 700px) {
+  .app-header {
+    padding-left: max(22px, calc((100% - 680px) / 2));
+    padding-right: max(22px, calc((100% - 680px) / 2));
+  }
+  .page-wrap { padding: 34px 20px 44px; }
+  .bottom-nav { width: min(620px, calc(100% - 32px)); }
+}
