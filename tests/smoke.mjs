@@ -18,8 +18,10 @@ assert.ok(app.includes("'New person', 'Crush', 'Dating', 'Friend'"), 'Openers sh
 assert.ok(app.includes("'All', 'Casual', 'Funny', 'Flirty', 'Deep'"), 'Openers should include All and multiple styles');
 assert.ok(app.includes('generateOpeners'), 'Openers should support AI generation');
 assert.ok(app.includes("'School'"), 'School category should exist');
-assert.ok(app.includes("'All games'"), 'Game generation support should remain available internally');
-assert.ok(!index.includes('<h3>Conversation games</h3>'), 'Conversation category sheet must keep Party Games separate');
+assert.ok(app.includes("'All games'"), 'Game generation support should remain available');
+assert.ok(app.includes("'Nigerian life', 'All games'"), 'Starters quick categories should expose Games');
+assert.ok(index.includes('<h3>Conversation games</h3>'), 'Conversation games should remain available inside Starters');
+assert.ok(index.includes('id="gameCategoryGrid"'), 'Conversation game category grid should exist');
 assert.ok(app.includes('5, 10, 15, 25, 30, 50'), 'All fresh-set sizes should exist');
 assert.ok(app.includes('Truth or Dare'), 'Truth or Dare should exist');
 assert.ok(app.includes('Red Flag, Green Flag or Depends?'), 'Red flag game should exist');

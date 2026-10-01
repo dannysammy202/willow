@@ -638,15 +638,19 @@ function renderOpeners() {
 }
 
 function renderCategorySheet() {
+  const gameSection = $('#gameCategorySection');
+
   if (state.categoryTarget === 'opener') {
     $('#categoryTitle').textContent = 'Opener category';
     $('#categorySectionTitle').textContent = 'Opener style';
+    gameSection.hidden = true;
     $('#topicCategoryGrid').innerHTML = OPENER_CATEGORIES.map(item => `
       <button type="button" class="${state.openerCategory === item ? 'active' : ''}" data-category-choice="${escapeHtml(item)}">${escapeHtml(item)}</button>
     `).join('');
     return;
   }
 
+  gameSection.hidden = false;
   $('#categoryTitle').textContent = 'Conversation category';
   $('#categorySectionTitle').textContent = 'Normal conversation';
   const selected = state.categoryTarget === 'browse' ? state.starterCategory : state.personalCategory;
@@ -654,12 +658,16 @@ function renderCategorySheet() {
     `<button type="button" class="${selected === 'All topics' ? 'active' : ''}" data-category-choice="All topics">All</button>`,
     ...TOPIC_CATEGORIES.map(item => `<button type="button" class="${selected === item ? 'active' : ''}" data-category-choice="${escapeHtml(item)}">${escapeHtml(item)}</button>`)
   ].join('');
+  $('#gameCategoryGrid').innerHTML = [
+    `<button type="button" class="${selected === 'All games' ? 'active' : ''}" data-category-choice="All games">All</button>`,
+    ...CONVERSATION_GAMES.map(item => `<button type="button" class="${selected === item ? 'active' : ''}" data-category-choice="${escapeHtml(item)}">${escapeHtml(item)}</button>`)
+  ].join('');
 }
 
 function renderStarterBrowse() {
-  const quick = ['All topics', 'School', 'Everyday', 'Deep', 'Nigerian life'];
+  const quick = ['All topics', 'School', 'Everyday', 'Deep', 'Nigerian life', 'All games'];
   $('#quickCategories').innerHTML = quick.map(item => `
-    <button type="button" class="chip ${state.starterCategory === item ? 'active' : ''}" data-quick-category="${escapeHtml(item)}">${item === 'All topics' ? 'All' : escapeHtml(item)}</button>
+    <button type="button" class="chip ${state.starterCategory === item ? 'active' : ''}" data-quick-category="${escapeHtml(item)}">${item === 'All topics' ? 'All' : item === 'All games' ? 'Games' : escapeHtml(item)}</button>
   `).join('') + `<button type="button" class="chip" id="openCategorySheet">More</button>`;
 
   const pool = promptsForCategory(state.starterCategory);
@@ -1332,5 +1340,5 @@ renderPlayers();
 navigate('reply');
 
 if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js?v=20261001-2').catch(() => {}));
+  window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js?v=20261001-3').catch(() => {}));
 }
