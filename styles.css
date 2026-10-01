@@ -118,6 +118,10 @@ button:disabled { opacity: 0.48; cursor: not-allowed; }
   stroke-linejoin: round;
 }
 .icon-button svg { width: 24px; height: 24px; }
+.icon-button .isax { font-size: 24px; line-height: 1; }
+.upload-icon { font-size: 30px; line-height: 1; color: var(--sage); margin-bottom: 5px; }
+.back-button { display: inline-flex; align-items: center; gap: 7px; }
+.back-button .isax { font-size: 19px; }
 
 .app-main { min-height: 100dvh; }
 .screen { display: none; }
@@ -539,6 +543,7 @@ html[data-theme="light"] .feature-card { background: var(--sage); color: #FFF9F2
 .bottom-nav button.active { background: var(--active-nav); color: var(--sage-light); }
 html[data-theme="light"] .bottom-nav button.active { color: var(--sage); }
 .bottom-nav svg { width: 23px; height: 23px; }
+.bottom-nav .isax { font-size: 23px; line-height: 1; }
 .bottom-nav span { font-size: 10px; line-height: 1.05; white-space: nowrap; }
 
 .sheet-backdrop {
@@ -662,6 +667,7 @@ html[data-theme="light"] .bottom-nav button.active { color: var(--sage); }
   .chip { padding: 0 13px; }
   .bottom-nav span { font-size: 9px; }
   .bottom-nav svg { width: 21px; height: 21px; }
+  .bottom-nav .isax { font-size: 21px; }
   .game-card { min-height: 144px; padding: 15px; }
 }
 
@@ -679,11 +685,9 @@ html[data-theme="light"] .bottom-nav button.active { color: var(--sage); }
   place-items: center;
   width: 20px;
   height: 20px;
-  font-size: 18px;
+  font-size: 20px;
   line-height: 1;
-  font-weight: 700;
 }
-.arrow-icon { font-size: 20px; }
 .starter-card p { font-size: 17px; line-height: 1.58; }
 #starterMore .starter-card { padding: 20px; }
 #starterMore .result-copy { width: auto; min-width: 112px; padding: 0 18px; }
